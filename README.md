@@ -11,26 +11,48 @@ Whisper Transcribe is a tool for transcribing video (creative captions for YouTu
 
 ## Installation
 
-1. Clone the repository:
+### Prerequisites
 
-   ```bash
-   git clone https://github.com/ptmrio/whisper-transcribe.git
-   cd project-whisper
-   ```
+#### Install FFmpeg
 
-2. Install the required Python packages:
+- **Windows**: Download the latest build from the [official website](https://ffmpeg.org/download.html) and add the `bin` directory to your system's PATH.
+
+- **macOS**: Install FFmpeg using [Homebrew](https://brew.sh/):
+
+  ```bash
+  brew install ffmpeg
+  ```
+
+- **Linux**: Install FFmpeg using your package manager:
+
+  ```bash
+    sudo apt-get install ffmpeg
+  ```
+
+  ####
+
+  1. Clone the repository:
+
+  ```bash
+  git clone https://github.com/ptmrio/whisper-transcribe.git
+  cd project-whisper
+  ```
+
+### Install Whisper Transcribe (for Linux and macOS, Windows users can use the executable)
+
+1. Install the required Python packages:
 
    ```bash
    pip install -r requirements.txt
    ```
 
-3. Create a `.env` file from the provided example:
+2. Create a `.env` file from the provided example:
 
    ```bash
    cp .env.example .env
    ```
 
-4. Add your OpenAI API key to the `.env` file:
+3. Add your OpenAI API key to the `.env` file:
 
    ```plaintext
    OPENAI_API_KEY=your_openai_api_key_here
@@ -57,7 +79,6 @@ python whisper.py --file="path_to_your_file.mp4" --language="DE"
    ```plaintext
    OPENAI_API_KEY=your_openai_api_key_here
    ```
-
 
 3. Run the executable:
 

@@ -26,12 +26,12 @@ Whisper Transcribe is a tool for transcribing video (creative captions for YouTu
 - **Linux**: Install FFmpeg using your package manager:
 
   ```bash
-    sudo apt-get install ffmpeg
+  sudo apt-get install ffmpeg
   ```
 
   ####
 
-  1. Clone the repository:
+- Clone the repository:
 
   ```bash
   git clone https://github.com/ptmrio/whisper-transcribe.git

@@ -1,6 +1,6 @@
 # Whisper Transcribe
 
-Whisper Transcribe is a tool for transcribing audio and correcting dialect using OpenAI's Whisper model (Speech to Text) and Chat Completions. This project extracts audio from video files, transcribes the audio, and corrects the text for dialects while maintaining the timing of the original video.
+Whisper Transcribe is a tool for transcribing video (creative captions for YouTube etc.) and correcting dialect using OpenAI's Whisper model (Speech to Text) and Chat Completions. This project extracts audio from video files, transcribes the audio, and corrects the text for dialects while maintaining the timing of the original video.
 
 ## Features
 

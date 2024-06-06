@@ -1,6 +1,6 @@
-# Whisper Transcribe
+# VideoSubtitler
 
-Whisper Transcribe is an essential tool for content creators who need high-quality captions for their videos. Using OpenAI's Whisper model for Speech to Text and Chat Completions, this project extracts audio from video files, transcribes the audio, and corrects dialects while maintaining the timing of the original video. Perfect for YouTube creators, Whisper Transcribe ensures your captions are accurate and contextually appropriate, enhancing accessibility and viewer engagement.
+VideoSubtitler is an essential tool for content creators who need high-quality captions for their videos. Using OpenAI's Whisper model for Speech to Text and Chat Completions, this project extracts audio from video files, transcribes the audio, and corrects dialects while maintaining the timing of the original video. Perfect for YouTube creators, VideoSubtitler ensures your captions are accurate and contextually appropriate, enhancing accessibility and viewer engagement.
 
 ## Features
 
@@ -55,7 +55,7 @@ Whisper Transcribe is an essential tool for content creators who need high-quali
 
 ## Usage (Windows Executable)
 
-1. Download the latest release from the [Releases](https://github.com/ptmrio/whisper-transcribe/releases) page.
+1. Download the latest release from the [Releases](https://github.com/ptmrio/video-subtitler/releases) page.
 2. Extract the ZIP file to a directory of your choice.
 3. Open the directory and create a `.env` file with your OpenAI API key:
    ```plaintext
@@ -75,8 +75,8 @@ Whisper Transcribe is an essential tool for content creators who need high-quali
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/ptmrio/whisper-transcribe.git
-   cd whisper-transcribe
+   git clone https://github.com/ptmrio/video-subtitler.git
+   cd video-subtitler
    ```
 
 ### Install Dependencies
@@ -118,7 +118,7 @@ Contributions are welcome! Please open an issue or submit a pull request.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](https://github.com/ptmrio/whisper-transcribe/blob/main/LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/ptmrio/video-subtitler/blob/main/LICENSE) file for details.
 
 ## Donations
 

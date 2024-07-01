@@ -61,10 +61,10 @@ VideoSubtitler is an essential tool for content creators who need high-quality c
    ```plaintext
    OPENAI_API_KEY=your_openai_api_key_here
    ```
-4. Open Command Prompt in the directory where `whisper.exe` is located.
+4. Open Command Prompt in the directory where `video-subtitler.exe` is located.
 5. Run the executable with the required arguments:
    ```cmd
-   whisper.exe --file="path_to_your_file.mp4" --language="DE"
+   video-subtitler.exe --file="path_to_your_file.mp4" --language="DE"
    ```
 
 6. After processing, the transcription will be saved to a file named `your_file.transcription.json` in the same directory as the original video or audio file. You can open this file with any text editor, copy the transcription, and paste it into a timing editor like YouTube Studio to auto-match the timing of your captions.
@@ -100,7 +100,7 @@ VideoSubtitler is an essential tool for content creators who need high-quality c
 
 1. Run the script with the required arguments:
    ```bash
-   python whisper.py --file="path_to_your_file.mp4" --language="DE"
+   python video-subtitler.py --file="path_to_your_file.mp4" --language="DE"
    ```
 
 ## Parameters

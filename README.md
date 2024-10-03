@@ -1,129 +1,139 @@
-# VideoSubtitler
+# Video Subtitler & Text-to-Speech Generator
 
-VideoSubtitler is an essential tool for content creators who need high-quality captions for their videos. Using OpenAI's Whisper model for Speech to Text and Chat Completions, this project extracts audio from video files, transcribes the audio, and corrects dialects while maintaining the timing of the original video. Perfect for YouTube creators, VideoSubtitler ensures your captions are accurate and contextually appropriate, enhancing accessibility and viewer engagement.
+## Overview
+
+This project provides two standalone tools for **Video Subtitling** and **Text-to-Speech** generation using OpenAI's models. The **Video Subtitler** extracts and transcribes audio from video files, while the **Text-to-Speech Generator** converts text files into speech. Both tools are distributed as `.exe` files for easy use, and they leverage OpenAI’s **Whisper** for transcription and **TTS** for generating speech.
 
 ## Features
 
-- Extracts audio from video files
-- Automatically splits the audio into smaller segments (Whisper model max filesize: 25 MB)
-- Transcribes audio using OpenAI's Whisper model
-- Corrects dialects in the transcription using Chat Completions (context-aware)
+### Video Subtitler
+
+- Transcribes audio and video files using OpenAI's **Whisper** speech-to-text model.
+- Supports video formats like `.mp4`, `.mov`, `.mpeg`, and more.
+- Extracts audio from video files and splits large audio files for optimal transcription.
+- Offers transcription correction using GPT for refined and accurate text output.
+- Customizable with language and prompt settings.
+
+![Text-to-Speech Generator](https://github.com/ptmrio/video-subtitler/blob/main/screenshots/tts.png)
+
+### Text-to-Speech Generator
+
+- Converts text files into speech using OpenAI's **TTS** model.
+- Customizable voice selection and speed settings for more control over the output.
+- Outputs audio as `.mp3` files.
+
+![Video Subtitler](https://github.com/ptmrio/video-subtitler/blob/main/screenshots/video-subtitler.png)
 
 ## Prerequisites
 
-### Get an OpenAI API Key
+### FFmpeg Installation
 
-1. Go to the [OpenAI API Keys page](https://platform.openai.com/api-keys).
-2. Log in or sign up for an account.
-3. Click on "Create new secret key" and copy your API key.
+FFmpeg is required to handle video and audio processing. Install FFmpeg based on your operating system:
 
-### Install FFmpeg
+- **Windows Option 1: Install using winget (recommended)**:
 
-#### Windows
-
-- **Option 1: Download from the official website**:
-  1. Download the latest build from the [official website](https://ffmpeg.org/download.html).
-  2. Extract the ZIP file to a location on your computer, e.g., `C:\ffmpeg`.
-  3. Add the `bin` directory of `ffmpeg` to your system's PATH.
-
-- **Option 2: Install using Chocolatey**:
-  1. Install Chocolatey from [chocolatey.org](https://chocolatey.org/install).
-  2. Open Command Prompt as Administrator and run:
-     ```cmd
-     choco install ffmpeg
-     ```
-
-- **Option 3: Install using winget**:
   1. Open Command Prompt as Administrator and run:
      ```cmd
      winget install ffmpeg
      ```
 
-#### macOS
+- **Windows Option 2: Download from the official website**:
 
-- Install FFmpeg using [Homebrew](https://brew.sh/):
+  1. Download the latest build from the [official website](https://ffmpeg.org/download.html).
+  2. Extract the ZIP file to a location on your computer, e.g., `C:\ffmpeg`.
+  3. Add the `bin` directory of `ffmpeg` to your system's PATH.
+
+- **macOS**: Install via Homebrew:
   ```bash
   brew install ffmpeg
   ```
-
-#### Linux
-
-- Install FFmpeg using your package manager:
+- **Linux**: Install via APT:
   ```bash
   sudo apt-get install ffmpeg
   ```
 
-## Usage (Windows Executable)
+### OpenAI API Key
 
-1. Download the latest release from the [Releases](https://github.com/ptmrio/video-subtitler/releases) page.
-2. Extract the ZIP file to a directory of your choice.
-3. Open the directory and create a `.env` file with your OpenAI API key:
-   ```plaintext
-   OPENAI_API_KEY=your_openai_api_key_here
-   ```
-4. Open Command Prompt in the directory where `video-subtitler.exe` is located.
-5. Run the executable with the required arguments:
-   ```cmd
-   video-subtitler.exe --file="path_to_your_file.mp4" --language="DE"
-   ```
+- Obtain an OpenAI API key from [OpenAI's platform](https://platform.openai.com/signup).
+- Set this API key in the `config.yaml` file as described in the configuration section.
 
-6. After processing, the transcription will be saved to a file named `your_file.transcription.json` in the same directory as the original video or audio file. You can open this file with any text editor, copy the transcription, and paste it into a timing editor like YouTube Studio to auto-match the timing of your captions.
+## Installation
 
-## Installation (Universal with Python)
+### Windows
 
-### Clone the Repository
+1. **Download the ZIP**:
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/ptmrio/video-subtitler.git
-   cd video-subtitler
-   ```
+   - Go to the [Releases](https://github.com/ptmrio/video-subtitler/releases) page on GitHub and download the latest `.zip` file.
+   - Extract the contents to a directory on your system.
 
-### Install Dependencies
+2. **Set Up Configuration**:
+   - Rename the `config.example.yaml` file to `config.yaml` and set up the configuration parameters.
+   - Basically you only need to set the `openai.api_key` parameter with your OpenAI API key.
+   - The `prompt` parameter can be used to teach Video Subtitler about special words or phrases (trademarks, unusual names) that may appear in your video.
+   - Example `config.yaml`:
+     ```yaml
+     openai:
+       api_key: sk-XXX
+       stt_model: whisper-1
+       tts_model: tts-1
+       completions_model: gpt-4o
+       temperature: 0
+     default:
+       language: EN
+       stt_prompt: PhraseVault, Video Subtitler
+       tts_voice: echo
+       tts_speed: 1
+     ```
 
-1. Install the required Python packages:
-   ```bash
-   pip install -r requirements.txt
-   ```
+### macOS/Linux
 
-2. Create a `.env` file from the provided example:
-   ```bash
-   cp .env.example .env
-   ```
+1. **Clone the Repository**:
+   - Clone the repository to your local machine:
+     ```bash
+     git clone https://github.com/ptmrio/video-subtitler.git
+     cd video-subtitler
+     ```
 
-3. Add your OpenAI API key to the `.env` file:
-   ```plaintext
-   OPENAI_API_KEY=your_openai_api_key_here
-   ```
+2. **Set Up Configuration**:
+   - see step 2 in the Windows installation instructions.
 
-### Running the Python Script
+3. **Install Dependencies**:
+   - Install the required Python packages:
+     ```bash
+     pip install -r requirements.txt
+     ```
+   
+4. **Run the Application**:
+   - Run the application using Python:
+     ```bash
+     python video_subtitler.py
+     ```
+     or
+     ```bash
+     python text_to_speech.py
+     ```
 
-1. Run the script with the required arguments:
-   ```bash
-   python video-subtitler.py --file="path_to_your_file.mp4" --language="DE"
-   ```
 
-## Parameters
+## Usage
 
-- `--file` (str, required): Path to the audio or video file.
-- `--model` (str, default="whisper-1"): Model to use for transcription.
-- `--language` (str): Language of the input audio (ISO-639-1 format).
-- `--prompt` (str): Optional text to guide the model's style.
-- `--response_format` (str, default="json"): Format of the transcript output.
-- `--temperature` (float, default=0): Sampling temperature between 0 and 1.
+### Text-to-Speech Generator
 
-## Contributing
+1. Navigate to the downloaded and extracted folder and run the `text-to-speech.exe` file.
+2. Enter the path to your `.txt` text-file, customize the voice and speed (if necessary), and click **Generate Speech**.
+3. The application will convert the text into speech and save the result as an `.tts.mp3` file.
 
-Contributions are welcome! Please open an issue or submit a pull request.
+### Video Subtitler
+
+1. Navigate to the downloaded and extracted folder and run the `video-subtitler.exe` file.
+2. Provide the path to your audio or video file and configure optional settings such as language or custom prompts.
+3. Click **Transcribe** to begin transcription. The resulting transcription will be saved as a `.transcription.txt` file.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](https://github.com/ptmrio/video-subtitler/blob/main/LICENSE) file for details.
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
 
 ## Donations
 
-If you find this project useful, consider donating to support its development:
-
-- [PayPal](https://paypal.me/Petermeir)
+If you find this project useful, consider donating to support its development.
 
 Thank you for your support!

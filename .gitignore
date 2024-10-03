@@ -1,5 +1,8 @@
 build/
-env/
+venv/
 .env
 __pycache__/
 *.pyc
+config.yaml
+setup.ps1
+build.py
